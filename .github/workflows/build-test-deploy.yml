@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew build
       - name: Tag with Artifact Version
         id: artifact_version
-        run: echo "::set-output name= tag::$(curl https://jfrog.example.com /artifactory/api/storage/YOUR_REPOSITORY/YOUR_ARTIFACT_PATH?properties=version | grep -oP '\bversion=\K\S+')"
+        run: echo "::set-output name= tag::$(curl packages.aa.com | grep -oP '\bversion=\K\S+')"
       - name: log tag
         run: echo ${{ steps.artifact_version.outputs.tag }}
       - name: Login to Azure Registry
