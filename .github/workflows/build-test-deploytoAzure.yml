@@ -40,7 +40,7 @@ jobs:
               "X-JFrog-Art-Api:${{secrets.JFROG_API_KEY}}" | grep -Po '(?<=version=).*' | tail -1)
               echo "::set-output name=version::$VERSION"
   Login_in_to_AZURE_and_push :
-    needs: build
+    needs: [build, Get_Artifact_from_Artifactory]
     runs-on: ubuntu-latest
     steps:
           - name: Login to Azure Registry
