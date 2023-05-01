@@ -30,6 +30,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
   Get Artifact from Artifactory:
+    runs-on: ubuntu-latest
     needs: build
     steps:
           - name: Get Artifact Version
@@ -40,6 +41,7 @@ jobs:
               echo "::set-output name=version::$VERSION"
   Login in to AZURE and push :
     needs: build, Get Artifact from Artifactory
+    runs-on: ubuntu-latest
     steps:
           - name: Login to Azure Registry
             uses: azure/docker-login@v1
